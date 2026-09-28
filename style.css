@@ -1,0 +1,262 @@
+/* ==========================================================
+   style.css — all the styling for index.html
+
+   Design idea: warm and professional.
+   - Colors: sage green + cream. Cream feels warmer and softer
+     than pure white; sage green is calm and natural.
+   - Font: "Source Sans 3" for body text (clean and easy to read),
+     "Lora" for headings (a serif that adds warmth).
+   ========================================================== */
+
+
+/* ---------- Color and font variables ----------
+   Defined once here, then reused everywhere with var(--name).
+   Changing a color here changes it across the whole page. */
+:root {
+  --cream: #f7f3e9;        /* page background */
+  --cream-dark: #efe8d8;   /* slightly darker cream for alternating sections */
+  --sage: #8fa98a;         /* main sage green (decorations, photo circle) */
+  --sage-dark: #4f6b4f;    /* darker sage, used for text and links so they're readable */
+  --sage-light: #dfe8da;   /* pale sage for soft backgrounds */
+  --ink: #2e332d;          /* main text color: very dark green-gray, softer than black */
+  --muted: #5f665d;        /* secondary text */
+
+  --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  --font-head: "Lora", Georgia, serif;
+}
+
+
+/* ---------- Base / reset ---------- */
+
+/* Makes width and padding add up predictably on every element */
+* {
+  box-sizing: border-box;
+}
+
+/* Clicking a nav link glides to the section instead of jumping */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;     /* 18px: slightly larger than the default for comfortable reading */
+  line-height: 1.7;        /* extra space between lines makes paragraphs easier to read */
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--sage-dark);
+  text-underline-offset: 3px;  /* moves the underline down a little so it doesn't touch letters */
+}
+
+
+/* ---------- Layout container ----------
+   Keeps content in a centered column that never gets too wide.
+   Lines of text longer than ~70 characters get tiring to read. */
+.container {
+  max-width: 760px;
+  margin: 0 auto;          /* "auto" left/right margins center the column */
+  padding: 0 1.25rem;      /* keeps text off the edge of the screen on phones */
+}
+
+/* Every section gets the same generous top/bottom spacing.
+   clamp() means: at least 3.5rem, ideally 10% of screen width, at most 6rem. */
+section {
+  padding: clamp(3.5rem, 10vw, 6rem) 0;
+}
+
+
+/* ---------- Top navigation bar ----------
+   "sticky" keeps it at the top of the screen while you scroll. */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;             /* keeps the nav on top of everything else */
+  background: var(--cream);
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.site-nav .container {
+  display: flex;                    /* puts the name and links on one row */
+  justify-content: space-between;   /* name on the left, links on the right */
+  align-items: center;
+  flex-wrap: wrap;                  /* lets links drop to a new line on narrow phones */
+  gap: 0.5rem 1rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.nav-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;        /* removes the bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  color: var(--sage-dark);
+}
+
+
+/* ---------- Intro (hero) section ----------
+   The first thing visitors see: photo, big name, one-line pitch. */
+.intro {
+  text-align: center;
+  background: var(--sage-light);
+}
+
+/* Photo placeholder: a sage circle with initials.
+   To use a real photo, see the comment in index.html. */
+.photo {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;              /* 50% rounding turns a square into a circle */
+  background: var(--sage);
+  color: var(--cream);
+  display: flex;                   /* these three lines center the initials */
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 3rem;
+  font-weight: 700;
+  border: 4px solid var(--cream);
+  object-fit: cover;               /* when it's a real <img>, crops it neatly instead of stretching */
+}
+
+/* The name is the biggest text on the page, so it's what you read first.
+   clamp() makes it shrink on phones and grow on large screens. */
+.intro h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.pitch {
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
+  color: var(--muted);
+  max-width: 34ch;                 /* keeps the pitch to about two lines */
+  margin: 0 auto 2rem;
+}
+
+/* The "Get in touch" button */
+.button {
+  display: inline-block;
+  background: var(--sage-dark);
+  color: var(--cream);
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;            /* very large rounding = pill shape */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: var(--ink);
+}
+
+
+/* ---------- Section headings ----------
+   A short sage line under each heading ties the sections together visually. */
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.6rem;
+  border-radius: 2px;
+  background: var(--sage);
+}
+
+
+/* ---------- Events section ----------
+   Alternating background color separates it from About and Contact. */
+.events {
+  background: var(--cream-dark);
+}
+
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;           /* stacks the event cards with even spacing */
+  gap: 1.25rem;
+}
+
+.event {
+  background: var(--cream);
+  border-left: 4px solid var(--sage);   /* sage stripe on the left of each card */
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+.event h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.event-role {
+  color: var(--sage-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+}
+
+.event p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------- Contact section ---------- */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-label {
+  display: inline-block;
+  min-width: 5.5rem;       /* lines up the values in a neat column */
+  font-weight: 600;
+  color: var(--muted);
+}
+
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--cream-dark);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

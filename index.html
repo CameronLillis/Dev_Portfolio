@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- lang="en" tells browsers and screen readers the page is in English -->
+<html lang="en">
+<head>
+  <!-- Character set: lets the page show any letter or symbol correctly -->
+  <meta charset="UTF-8">
+  <!-- Makes the page fit phone screens instead of showing a zoomed-out desktop view -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Text shown on the browser tab and in search results -->
+  <title>Cameron Lillis</title>
+  <meta name="description" content="Cameron Lillis, a computer science student at UNLV who loves learning about technology.">
+
+  <!-- Loads the two fonts from Google Fonts: Lora (headings) and Source Sans 3 (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Connects this page to the stylesheet. All the visual design lives in style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION =====
+       The links point to section ids below (#about, #events, #contact),
+       so clicking one scrolls to that part of the page. -->
+  <nav class="site-nav" aria-label="Main">
+    <div class="container">
+      <a class="nav-name" href="#top">Cameron Lillis</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===== INTRO =====
+         Big name + one-line pitch. id="top" lets the nav name link back here. -->
+    <section class="intro" id="top">
+      <div class="container">
+
+        <!-- PHOTO PLACEHOLDER
+             To add your photo: put the image file (e.g. photo.jpg) in the same
+             folder as this file, then replace the <div> below with:
+             <img class="photo" src="photo.jpg" alt="Photo of Cameron Lillis">
+             Check the photo's background for anything private first. -->
+        <div class="photo" role="img" aria-label="Photo placeholder">CL</div>
+
+        <h1>Cameron Lillis</h1>
+        <p class="pitch">Computer science student at UNLV with a passion for learning how technology works.</p>
+        <a class="button" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p>
+          I'm a computer science major at the University of Nevada, Las Vegas.
+          I've always wanted to know what's happening under the hood, whether
+          that's how a website reaches your phone or how a program turns a few
+          lines of code into something people use every day. I like learning by
+          building things, and I enjoy helping bring people together around
+          technology.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== EVENTS =====
+         Each <li class="event"> is one card. To add a fourth event,
+         copy one whole <li>...</li> block and paste it below the others. -->
+    <section class="events" id="events">
+      <div class="container">
+        <h2 class="section-title">Events I've Helped Run</h2>
+        <ul class="event-list">
+
+          <li class="event">
+            <h3>[Event name]</h3>
+            <p class="event-role">[Your role] · [Month Year]</p>
+            <p>[One or two sentences: what the event was and what you did.]</p>
+          </li>
+
+          <li class="event">
+            <h3>[Event name]</h3>
+            <p class="event-role">[Your role] · [Month Year]</p>
+            <p>[One or two sentences: what the event was and what you did.]</p>
+          </li>
+
+          <li class="event">
+            <h3>[Event name]</h3>
+            <p class="event-role">[Your role] · [Month Year]</p>
+            <p>[One or two sentences: what the event was and what you did.]</p>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT =====
+         Only public, billboard-safe info: an email and a city. -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p>I'm always happy to talk about tech, events, or opportunities.</p>
+        <ul class="contact-list">
+          <!-- "mailto:" opens the visitor's email app with your address filled in -->
+          <li><span class="contact-label">Email</span> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+          <li><span class="contact-label">Location</span> Las Vegas, NV</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Cameron Lillis · Built with HTML &amp; CSS</p>
+    </div>
+  </footer>
+
+</body>
+</html>
