@@ -1,9 +1,10 @@
 /* ==========================================================
    style.css — all the styling for index.html
 
-   Design idea: warm and professional.
-   - Colors: sage green + cream. Cream feels warmer and softer
-     than pure white; sage green is calm and natural.
+   Design idea: light, calm and professional.
+   - Colors: a light blue palette. Pale blue-white backgrounds feel
+     clean and open; one deeper blue is used for links and the button
+     so the things you can click always stand out.
    - Font: "Source Sans 3" for body text (clean and easy to read),
      "Lora" for headings (a serif that adds warmth).
    ========================================================== */
@@ -13,13 +14,13 @@
    Defined once here, then reused everywhere with var(--name).
    Changing a color here changes it across the whole page. */
 :root {
-  --cream: #f7f3e9;        /* page background */
-  --cream-dark: #efe8d8;   /* slightly darker cream for alternating sections */
-  --sage: #8fa98a;         /* main sage green (decorations, photo circle) */
-  --sage-dark: #4f6b4f;    /* darker sage, used for text and links so they're readable */
-  --sage-light: #dfe8da;   /* pale sage for soft backgrounds */
-  --ink: #2e332d;          /* main text color: very dark green-gray, softer than black */
-  --muted: #5f665d;        /* secondary text */
+  --bg: #f6fafd;           /* page background: almost white with a hint of blue */
+  --bg-alt: #e9f2f9;       /* slightly bluer background for alternating sections */
+  --blue: #7fb3dc;         /* main light blue (decorations, photo circle) */
+  --blue-dark: #2c6592;    /* deeper blue for links and the button, dark enough to read easily */
+  --blue-light: #dbeaf6;   /* pale blue for the intro background */
+  --ink: #1e2b38;          /* main text color: dark navy-gray, softer than pure black */
+  --muted: #536271;        /* secondary text */
 
   --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
   --font-head: "Lora", Georgia, serif;
@@ -40,7 +41,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.125rem;     /* 18px: slightly larger than the default for comfortable reading */
@@ -54,7 +55,7 @@ h1, h2, h3 {
 }
 
 a {
-  color: var(--sage-dark);
+  color: var(--blue-dark);
   text-underline-offset: 3px;  /* moves the underline down a little so it doesn't touch letters */
 }
 
@@ -81,8 +82,8 @@ section {
   position: sticky;
   top: 0;
   z-index: 10;             /* keeps the nav on top of everything else */
-  background: var(--cream);
-  border-bottom: 1px solid var(--cream-dark);
+  background: var(--bg);
+  border-bottom: 1px solid var(--bg-alt);
 }
 
 .site-nav .container {
@@ -117,7 +118,7 @@ section {
 }
 
 .nav-links a:hover {
-  color: var(--sage-dark);
+  color: var(--blue-dark);
 }
 
 
@@ -125,26 +126,19 @@ section {
    The first thing visitors see: photo, big name, one-line pitch. */
 .intro {
   text-align: center;
-  background: var(--sage-light);
+  background: var(--blue-light);
 }
 
-/* Photo placeholder: a sage circle with initials.
-   To use a real photo, see the comment in index.html. */
+/* Headshot: a square image shown as a circle. */
 .photo {
+  display: block;                  /* images are inline by default; block lets auto margins center it */
   width: 160px;
   height: 160px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1.5rem;           /* "auto" left/right centers it above the name */
   border-radius: 50%;              /* 50% rounding turns a square into a circle */
-  background: var(--sage);
-  color: var(--cream);
-  display: flex;                   /* these three lines center the initials */
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-head);
-  font-size: 3rem;
-  font-weight: 700;
-  border: 4px solid var(--cream);
-  object-fit: cover;               /* when it's a real <img>, crops it neatly instead of stretching */
+  border: 4px solid var(--bg);     /* thin light ring around the photo */
+  background: var(--blue);         /* shows as a blue circle while the image is loading */
+  object-fit: cover;               /* fills the circle without stretching the photo */
 }
 
 /* The name is the biggest text on the page, so it's what you read first.
@@ -165,8 +159,8 @@ section {
 /* The "Get in touch" button */
 .button {
   display: inline-block;
-  background: var(--sage-dark);
-  color: var(--cream);
+  background: var(--blue-dark);
+  color: var(--bg);
   padding: 0.7rem 1.5rem;
   border-radius: 999px;            /* very large rounding = pill shape */
   text-decoration: none;
@@ -179,7 +173,7 @@ section {
 
 
 /* ---------- Section headings ----------
-   A short sage line under each heading ties the sections together visually. */
+   A short blue line under each heading ties the sections together visually. */
 .section-title {
   font-size: clamp(1.75rem, 4vw, 2.25rem);
 }
@@ -191,44 +185,44 @@ section {
   height: 4px;
   margin-top: 0.6rem;
   border-radius: 2px;
-  background: var(--sage);
+  background: var(--blue);
 }
 
 
-/* ---------- Events section ----------
+/* ---------- Projects section ----------
    Alternating background color separates it from About and Contact. */
-.events {
-  background: var(--cream-dark);
+.projects {
+  background: var(--bg-alt);
 }
 
-.event-list {
+.project-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;           /* stacks the event cards with even spacing */
+  display: grid;           /* stacks the project cards with even spacing */
   gap: 1.25rem;
 }
 
-.event {
-  background: var(--cream);
-  border-left: 4px solid var(--sage);   /* sage stripe on the left of each card */
+.project {
+  background: var(--bg);
+  border-left: 4px solid var(--blue);   /* blue stripe on the left of each card */
   border-radius: 8px;
   padding: 1.25rem 1.5rem;
 }
 
-.event h3 {
+.project h3 {
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
 }
 
-.event-role {
-  color: var(--sage-dark);
+.project-role {
+  color: var(--blue-dark);
   font-weight: 600;
   font-size: 0.95rem;
   margin: 0 0 0.5rem;
 }
 
-.event p:last-child {
+.project p:last-child {
   margin-bottom: 0;
 }
 
@@ -254,7 +248,7 @@ section {
 
 /* ---------- Footer ---------- */
 footer {
-  border-top: 1px solid var(--cream-dark);
+  border-top: 1px solid var(--bg-alt);
   padding: 2rem 0;
   text-align: center;
   color: var(--muted);
